@@ -9,6 +9,10 @@ export default {
       backgroundImage: {
         "home-1": "url('/ghost.webp')",
       },
+      gridTemplateColumns: {
+        // Grid for cards
+        cards: "repeat(auto-fit, minmax(300px, 1fr))",
+      },
     },
   },
   plugins: [],
