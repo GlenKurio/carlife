@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const navigation = [{ name: "Cars", href: "/cars", current: true }];
 
@@ -18,13 +18,17 @@ function Navbar() {
       </div>
       <ul className="flex gap-4 mx-auto">
         {navigation.map((item, idx) => (
-          <li
-            key={idx}
-            className="text-blue-50 hover:text-blue-500 font-[600] tracking-[1px] transition-all duration-200 text-sm  cursor-pointer uppercase "
-          >
-            <Link to={item.href} className="md:p-2">
+          <li key={idx} className="">
+            <NavLink
+              to={item.href}
+              className={({ isActive }) =>
+                isActive
+                  ? " text-blue-500 font-[600] tracking-[1px] text-sm  cursor-pointer uppercase md:p-2"
+                  : "text-blue-50 hover:text-blue-500 font-[600] tracking-[1px] transition-all duration-200 text-sm  cursor-pointer uppercase md:p-2"
+              }
+            >
               {item.name}
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>

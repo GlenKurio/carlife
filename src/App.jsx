@@ -12,6 +12,11 @@ import HostLayout from "./components/layouts/HostLayout/HostLayout";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
+import HostedCars from "./pages/Host/HostedCars/HostedCars";
+import HostedCarDetailsLayout from "./pages/Host/HostedCars/HostedCarDetails/HostedCarDetailsLayout";
+import Details from "./pages/Host/HostedCars/HostedCarDetails/Details";
+import Pricing from "./pages/Host/HostedCars/HostedCarDetails/Pricing";
+import Photos from "./pages/Host/HostedCars/HostedCarDetails/Photos";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
@@ -22,6 +27,12 @@ const router = createBrowserRouter(
         <Route index element={<Dashboard />} />
         <Route path="income" element={<Income />} />
         <Route path="reviews" element={<Reviews />} />
+        <Route path="cars" element={<HostedCars />} />
+        <Route path="cars/:id" element={<HostedCarDetailsLayout />}>
+          <Route index element={<Details />} />
+          <Route path="pricing" element={<Pricing />} />
+          <Route path="photos" element={<Photos />} />
+        </Route>
       </Route>
     </Route>
   )
