@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import AppLayout from "./components/layouts/AppLayout/AppLayout";
 import HomePage from "./pages/HomePage/HomePage";
-import CarsPage from "./pages/CarsPage/CarsPage";
+import CarsPage, { loader as carsLoader } from "./pages/CarsPage/CarsPage";
 import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage";
 import HostLayout from "./components/layouts/HostLayout/HostLayout";
 import Dashboard from "./pages/Host/Dashboard";
@@ -17,23 +17,43 @@ import HostedCarDetailsLayout from "./pages/Host/HostedCars/HostedCarDetails/Hos
 import Details from "./pages/Host/HostedCars/HostedCarDetails/Details";
 import Pricing from "./pages/Host/HostedCars/HostedCarDetails/Pricing";
 import Photos from "./pages/Host/HostedCars/HostedCarDetails/Photos";
+import NotFoundPage from "./pages/NotFoundPage";
+import Error from "./pages/Error";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
-      <Route index element={<HomePage />} />
-      <Route path="cars" element={<CarsPage />} />
-      <Route path="cars/:id" element={<CarDetailsPage />} />
-      <Route path="host" element={<HostLayout />}>
-        <Route index element={<Dashboard />} />
-        <Route path="income" element={<Income />} />
-        <Route path="reviews" element={<Reviews />} />
-        <Route path="cars" element={<HostedCars />} />
-        <Route path="cars/:id" element={<HostedCarDetailsLayout />}>
-          <Route index element={<Details />} />
-          <Route path="pricing" element={<Pricing />} />
-          <Route path="photos" element={<Photos />} />
+      <Route index element={<HomePage />} errorElement={<Error />} />
+      <Route
+        path="cars"
+        element={<CarsPage />}
+        errorElement={<Error />}
+        loader={carsLoader}
+      />
+      <Route
+        path="cars/:id"
+        element={<CarDetailsPage />}
+        errorElement={<Error />}
+      />
+      <Route path="host" element={<HostLayout />} errorElement={<Error />}>
+        <Route index element={<Dashboard />} errorElement={<Error />} />
+        <Route path="income" element={<Income />} errorElement={<Error />} />
+        <Route path="reviews" element={<Reviews />} errorElement={<Error />} />
+        <Route path="cars" element={<HostedCars />} errorElement={<Error />} />
+        <Route
+          path="cars/:id"
+          element={<HostedCarDetailsLayout />}
+          errorElement={<Error />}
+        >
+          <Route index element={<Details />} errorElement={<Error />} />
+          <Route
+            path="pricing"
+            element={<Pricing />}
+            errorElement={<Error />}
+          />
+          <Route path="photos" element={<Photos />} errorElement={<Error />} />
         </Route>
       </Route>
+      <Route path="*" element={<NotFoundPage />} errorElement={<Error />} />
     </Route>
   )
 );

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { setDocas } from "../../services/firebase/setCars";
 
 function HomePage() {
+  function handleClick() {
+    setDocas();
+  }
   return (
     <section className="py-16 bg-blue-50 min-h-screen">
       <div className="flex flex-col items-center justify-start gap-[2rem] bg-blue-50 bg-opacity-50 mx-auto p-8">
@@ -23,6 +27,7 @@ function HomePage() {
           </button>
         </Link>
       </div>
+      <button onClick={handleClick}>Upload docs</button>
       <div className="bg-home-1 bg-cover bg-top relative pt-20 md:w-[500px] md:h-[300px] mx-auto rounded-lg shadow-md  hover:shadow-lg duration-200 transition-all w-[90%] h-[250px]"></div>
     </section>
   );

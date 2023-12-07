@@ -16,7 +16,7 @@ function CarCard({ car }) {
         </h2>
         <span>Year: {car.year}</span>
         <div className="flex justify-between items-center">
-          <ClassBadge classen={car.classen} />
+          <ClassBadge type={car.type} />
           <span className="font-semibold">${car.price} / day</span>
         </div>
         <div className="relative inline-block">
