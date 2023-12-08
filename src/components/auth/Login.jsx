@@ -1,6 +1,22 @@
-import { Form } from "react-router-dom";
+import { Form, redirect, useActionData } from "react-router-dom";
+import { loginWithEmailAndPassword } from "../../services/firebase/apiAuth";
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const inputs = Object.fromEntries(formData);
+  console.log(inputs);
+
+  const errors = {};
+  const { userData, error } = await loginWithEmailAndPassword(inputs);
+
+  if (error) return (errors.creds = "No user found with provided credentials!");
+
+  return redirect("/host");
+}
 
 function LoginForm() {
+  const errors = useActionData();
+  console.log(errors);
   return (
     <div>
       <Form method="post" className="flex flex-col gap-4">
@@ -30,7 +46,11 @@ function LoginForm() {
             required
           />
         </label>
-
+        {errors && (
+          <span className="bg-pink-200 text-xs text-pink-600 rounded-md py-1">
+            {errors}
+          </span>
+        )}
         <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95">
           Login
         </button>

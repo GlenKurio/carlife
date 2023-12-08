@@ -9,6 +9,7 @@ export async function action({ request }) {
   if (inputs.password !== inputs.confirmPasswords) {
     errors.passwords = "Passwords doesn`t match";
   }
+
   if (Object.keys(errors).length > 0) return errors;
 
   await signupWithEmailAndPassword(inputs);
@@ -79,7 +80,7 @@ function SignupForm() {
           />
         </label>
         {errors?.passwords && (
-          <span className="bg-pink-200 text-xs text-pink-600 rounded-sm py-1">
+          <span className="bg-pink-200 text-xs text-pink-600 rounded-md py-1">
             {errors.passwords}
           </span>
         )}

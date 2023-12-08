@@ -20,14 +20,19 @@ import Pricing from "./components/host/HostedCarDetails/Pricing";
 import Photos from "./components/host/HostedCarDetails/Photos";
 import NotFoundPage from "./pages/NotFoundPage";
 import Error from "./pages/Error";
-import LoginForm from "./components/auth/Login";
+import LoginForm, { action as loginAction } from "./components/auth/Login";
 import SignupForm, { action as signupAction } from "./components/auth/Signup";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
       <Route index element={<HomePage />} errorElement={<Error />} />
       <Route path="auth" element={<AuthPage errorElement={<Error />} />}>
-        <Route index element={<LoginForm />} errorElement={<Error />} />
+        <Route
+          index
+          element={<LoginForm />}
+          errorElement={<Error />}
+          action={loginAction}
+        />
         <Route
           path="signup"
           element={<SignupForm />}

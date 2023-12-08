@@ -1,8 +1,6 @@
 # Auth:
 
-- Signup with email, password
 - Login with email, password
-- Login/Signup with Google
 
 # Hosted Cars:
 

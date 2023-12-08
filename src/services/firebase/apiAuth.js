@@ -1,6 +1,31 @@
-import { setDoc, doc } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { auth, firestore } from "./firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+
+export async function loginWithEmailAndPassword(inputs) {
+  try {
+    const userCred = await signInWithEmailAndPassword(
+      auth,
+      inputs.email,
+      inputs.password
+    );
+    if (!userCred && error) {
+      throw new Error("User with provided credentals not found");
+    }
+    if (userCred) {
+      const docRef = doc(firestore, "users", userCred.user.uid);
+      const docSnap = await getDoc(docRef);
+      const userData = docSnap.data();
+      localStorage.setItem("user-info", JSON.stringify(userData));
+      return userData;
+    }
+  } catch (error) {
+    return { error: error.message };
+  }
+}
 
 export async function signupWithEmailAndPassword(inputs) {
   try {
