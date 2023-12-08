@@ -5,6 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AppLayout from "./components/layouts/AppLayout/AppLayout";
+import AuthPage from "./pages/AuthPage/AuthPage";
 import HomePage from "./pages/HomePage/HomePage";
 import CarsPage, { loader as carsLoader } from "./pages/CarsPage/CarsPage";
 import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage";
@@ -12,17 +13,28 @@ import HostLayout from "./components/layouts/HostLayout/HostLayout";
 import Dashboard from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
-import HostedCars from "./pages/Host/HostedCars/HostedCars";
-import HostedCarDetailsLayout from "./pages/Host/HostedCars/HostedCarDetails/HostedCarDetailsLayout";
-import Details from "./pages/Host/HostedCars/HostedCarDetails/Details";
-import Pricing from "./pages/Host/HostedCars/HostedCarDetails/Pricing";
-import Photos from "./pages/Host/HostedCars/HostedCarDetails/Photos";
+import HostedCars from "./components/host/HostedCars/HostedCars";
+import HostedCarDetailsLayout from "./components/host/HostedCarDetails/HostedCarDetailsLayout";
+import Details from "./components/host/HostedCarDetails/Details";
+import Pricing from "./components/host/HostedCarDetails/Pricing";
+import Photos from "./components/host/HostedCarDetails/Photos";
 import NotFoundPage from "./pages/NotFoundPage";
 import Error from "./pages/Error";
+import LoginForm from "./components/auth/Login";
+import SignupForm, { action as signupAction } from "./components/auth/Signup";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
       <Route index element={<HomePage />} errorElement={<Error />} />
+      <Route path="auth" element={<AuthPage errorElement={<Error />} />}>
+        <Route index element={<LoginForm />} errorElement={<Error />} />
+        <Route
+          path="signup"
+          element={<SignupForm />}
+          action={signupAction}
+          errorElement={<Error />}
+        />
+      </Route>
       <Route
         path="cars"
         element={<CarsPage />}

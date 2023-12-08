@@ -1,5 +1,5 @@
-import CarCards from "./CarCards";
-import FilterNav from "./FilterNav";
+import CarCards from "../../components/cars/CarCards";
+import FilterNav from "../../components/cars/FilterNav";
 import { useSearchParams, useLoaderData, defer, Await } from "react-router-dom";
 import { Suspense } from "react";
 import getCars from "../../services/firebase/apiCars";

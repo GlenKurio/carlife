@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  input {
+    @apply block w-full p-2 rounded-md bg-blue-100 placeholder:text-blue-300 placeholder:font-semibold shadow-inner text-blue-900 font-semibold focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500  
+    focus:placeholder:text-opacity-50
+    focus:invalid:placeholder:text-opacity-50
+    disabled:bg-gray-200 disabled:text-gray-400 disabled:border-slate-200 disabled:shadow-none
+    disabled:placeholder:text-gray-500
+    focus:invalid:bg-pink-100
+    focus:invalid:border-pink-500 focus:invalid:text-pink-600
+    focus:invalid:ring-pink-500
+    focus:invalid:placeholder:text-pink-500;
+  }
+}
