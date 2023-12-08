@@ -20,6 +20,7 @@ export async function loginWithEmailAndPassword(inputs) {
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
       localStorage.setItem("user-info", JSON.stringify(userData));
+      localStorage.setItem("isAuth", true);
       return userData;
     }
   } catch (error) {
@@ -50,6 +51,7 @@ export async function signupWithEmailAndPassword(inputs) {
       };
       await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
       localStorage.setItem("user-info", JSON.stringify(userDoc));
+      localStorage.setItem("isAuth", true);
     }
   } catch (e) {
     throw new Error(e.message);

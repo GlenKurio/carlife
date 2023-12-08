@@ -4,7 +4,6 @@ import { loginWithEmailAndPassword } from "../../services/firebase/apiAuth";
 export async function action({ request }) {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
-  console.log(inputs);
 
   const errors = {};
   const { userData, error } = await loginWithEmailAndPassword(inputs);
@@ -16,7 +15,7 @@ export async function action({ request }) {
 
 function LoginForm() {
   const errors = useActionData();
-  console.log(errors);
+
   return (
     <div>
       <Form method="post" className="flex flex-col gap-4">

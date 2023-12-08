@@ -1,7 +1,7 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, firestore } from "../../services/firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
+import { redirect } from "react-router-dom";
 function GoogleAuth({ prefix }) {
   const provider = new GoogleAuthProvider();
 
@@ -19,6 +19,8 @@ function GoogleAuth({ prefix }) {
         // login
         const userDoc = userSnap.data();
         localStorage.setItem("user-info", JSON.stringify(userDoc));
+        localStorage.setItem("isAuth", true);
+        redirect("/host");
       } else {
         //signup
         const userDoc = {
@@ -32,6 +34,8 @@ function GoogleAuth({ prefix }) {
 
         await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
         localStorage.setItem("user-info", JSON.stringify(userDoc));
+        localStorage.setItem("isAuth", true);
+        redirect("/host");
       }
     } catch (e) {
       throw new Error(e.message);

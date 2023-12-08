@@ -22,6 +22,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Error from "./pages/Error";
 import LoginForm, { action as loginAction } from "./components/auth/Login";
 import SignupForm, { action as signupAction } from "./components/auth/Signup";
+import ProtectedRoute from "./components/layouts/HostLayout/ProtectedRoute";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<AppLayout />}>
@@ -40,18 +42,21 @@ const router = createBrowserRouter(
           errorElement={<Error />}
         />
       </Route>
-      <Route
-        path="cars"
-        element={<CarsPage />}
-        errorElement={<Error />}
-        loader={carsLoader}
-      />
+      <Route path="cars" element={<CarsPage />} errorElement={<Error />} />
       <Route
         path="cars/:id"
         element={<CarDetailsPage />}
         errorElement={<Error />}
       />
-      <Route path="host" element={<HostLayout />} errorElement={<Error />}>
+      <Route
+        path="host"
+        element={
+          <ProtectedRoute>
+            <HostLayout />
+          </ProtectedRoute>
+        }
+        errorElement={<Error />}
+      >
         <Route index element={<Dashboard />} errorElement={<Error />} />
         <Route path="income" element={<Income />} errorElement={<Error />} />
         <Route path="reviews" element={<Reviews />} errorElement={<Error />} />

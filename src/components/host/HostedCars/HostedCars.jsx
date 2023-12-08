@@ -66,10 +66,8 @@ function HostedCars() {
   return (
     <div className="flex flex-col gap-4">
       <h1>Your hosted cars</h1>
-      {hostedCars.map((hCar, idx) => (
-        <Link to={hCar.id} key={idx}>
-          <HostedCarsCard car={hCar} />
-        </Link>
+      {hostedCars.map((hCar) => (
+        <HostedCarsCard car={hCar} key={hCar.id} />
       ))}
     </div>
   );
