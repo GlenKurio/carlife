@@ -4,7 +4,8 @@ import { loginWithEmailAndPassword } from "../../services/firebase/apiAuth";
 export async function action({ request }) {
   const formData = await request.formData();
   const inputs = Object.fromEntries(formData);
-
+  const pathname =
+    new URL(request.url).searchParams.get("redirectTo") || "/host";
   const errors = {};
   const { userData, error } = await loginWithEmailAndPassword(inputs);
 

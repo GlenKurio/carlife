@@ -5,7 +5,7 @@ function LogoutButton() {
     try {
       await signOut(auth);
       localStorage.removeItem("user-info");
-      localStorage.setItem("isAuth", false);
+      localStorage.setItem("isLoggedin", false);
     } catch (error) {
       throw new Error(error.message);
     }

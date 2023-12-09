@@ -19,7 +19,7 @@ function GoogleAuth({ prefix }) {
         // login
         const userDoc = userSnap.data();
         localStorage.setItem("user-info", JSON.stringify(userDoc));
-        localStorage.setItem("isAuth", true);
+        localStorage.setItem("isLoggedin", true);
         redirect("/host");
       } else {
         //signup
@@ -34,7 +34,7 @@ function GoogleAuth({ prefix }) {
 
         await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
         localStorage.setItem("user-info", JSON.stringify(userDoc));
-        localStorage.setItem("isAuth", true);
+        localStorage.setItem("isLoggedin", true);
         redirect("/host");
       }
     } catch (e) {

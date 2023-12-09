@@ -3,7 +3,10 @@ import { auth, firestore } from "./firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from "firebase/auth";
+import { useState } from "react";
+import { redirect } from "react-router-dom";
 
 export async function loginWithEmailAndPassword(inputs) {
   try {
@@ -20,7 +23,7 @@ export async function loginWithEmailAndPassword(inputs) {
       const docSnap = await getDoc(docRef);
       const userData = docSnap.data();
       localStorage.setItem("user-info", JSON.stringify(userData));
-      localStorage.setItem("isAuth", true);
+      localStorage.setItem("isLoggedin", true);
       return userData;
     }
   } catch (error) {
@@ -51,9 +54,21 @@ export async function signupWithEmailAndPassword(inputs) {
       };
       await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
       localStorage.setItem("user-info", JSON.stringify(userDoc));
-      localStorage.setItem("isAuth", true);
+      localStorage.setItem("isLoggedin", true);
     }
   } catch (e) {
     throw new Error(e.message);
   }
+}
+
+export function getAuth() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      localStorage.setItem("isLoggedin", true);
+      return redirect("/host");
+    } else {
+      localStorage.setItem("isLoggedin", false);
+      return redirect("/auth");
+    }
+  });
 }
