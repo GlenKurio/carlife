@@ -1,3 +1,5 @@
+import { Toaster } from "react-hot-toast";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,7 +9,7 @@ import {
 import AppLayout from "./components/layouts/AppLayout/AppLayout";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import HomePage from "./pages/HomePage/HomePage";
-import CarsPage, { loader as carsLoader } from "./pages/CarsPage/CarsPage";
+import CarsPage from "./pages/CarsPage/CarsPage";
 import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage";
 import HostLayout from "./components/layouts/HostLayout/HostLayout";
 import Dashboard from "./pages/Host/Dashboard";
@@ -20,8 +22,8 @@ import Pricing from "./components/host/HostedCarDetails/Pricing";
 import Photos from "./components/host/HostedCarDetails/Photos";
 import NotFoundPage from "./pages/NotFoundPage";
 import Error from "./pages/Error";
-import LoginForm, { action as loginAction } from "./components/auth/Login";
-import SignupForm, { action as signupAction } from "./components/auth/Signup";
+import LoginForm from "./components/auth/Login";
+import SignupForm from "./components/auth/Signup";
 import ProtectedRoute from "./components/layouts/HostLayout/ProtectedRoute";
 
 const router = createBrowserRouter(
@@ -29,16 +31,10 @@ const router = createBrowserRouter(
     <Route path="/" element={<AppLayout />}>
       <Route index element={<HomePage />} errorElement={<Error />} />
       <Route path="auth" element={<AuthPage errorElement={<Error />} />}>
-        <Route
-          index
-          element={<LoginForm />}
-          errorElement={<Error />}
-          action={loginAction}
-        />
+        <Route index element={<LoginForm />} errorElement={<Error />} />
         <Route
           path="signup"
           element={<SignupForm />}
-          action={signupAction}
           errorElement={<Error />}
         />
       </Route>
@@ -81,7 +77,32 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />;
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "4px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 3000,
+          },
+          style: {
+            fontSize: "14px",
+            fontWeight: "text-bold",
+            maxWidth: "400px",
+            padding: "8px 16px",
+            backgroundColor: "bg-blue-300",
+            color: "text-blue-900",
+          },
+        }}
+      />
+    </>
+  );
 }
 
 export default App;

@@ -1,24 +1,21 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../services/firebase/firebase";
+import { Navigate, useLocation } from "react-router-dom";
+import useFirebaseAuth from "../../../hooks/useFirebseAuthState";
 
 function ProtectedRoute({ children }) {
-  const navigate = useNavigate();
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        localStorage.setItem("isLoggedin", true);
-        return navigate("/host");
-      } else {
-        localStorage.setItem("isLoggedin", false);
-        return navigate("/auth");
-      }
-    });
-  }, []);
-  const canRender = localStorage.getItem("isLoggedin");
-  console.log(canRender);
-  return <>{canRender ? children : <Navigate to="/auth" replace={true} />}</>;
+  const { pathname } = useLocation();
+  const { user, isLoading } = useFirebaseAuth();
+  const checkingUserAuth = !user && isLoading;
+  const canRender = user && pathname !== "/auth";
+
+  if (checkingUserAuth) {
+    return (
+      <div className="grid place-content-center min-h-screen">Loading...</div>
+    );
+  }
+
+  if (canRender) {
+    return <>{children}</>;
+  }
 }
 
 export default ProtectedRoute;

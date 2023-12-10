@@ -1,11 +1,16 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../../services/firebase/firebase";
+import { toast } from "react-hot-toast";
 function LogoutButton() {
   async function handleLogout() {
     try {
       await signOut(auth);
-      localStorage.removeItem("user-info");
-      localStorage.setItem("isLoggedin", false);
+      localStorage.setItem("user-info", null);
+
+      toast("Come back soon", {
+        icon: "🥺",
+      });
+      // localStorage.setItem("isLoggedin", false);
     } catch (error) {
       throw new Error(error.message);
     }

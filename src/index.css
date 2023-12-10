@@ -9,9 +9,6 @@
     focus:invalid:placeholder:text-opacity-50
     disabled:bg-gray-200 disabled:text-gray-400 disabled:border-slate-200 disabled:shadow-none
     disabled:placeholder:text-gray-500
-    focus:invalid:bg-pink-100
-    focus:invalid:border-pink-500 focus:invalid:text-pink-600
-    focus:invalid:ring-pink-500
-    focus:invalid:placeholder:text-pink-500;
+    /* focus:invalid:bg-pink-100 focus:invalid:border-pink-500 focus:invalid:text-pink-600 focus:invalid:ring-pink-500 focus:invalid:placeholder:text-pink-500; */;
   }
 }

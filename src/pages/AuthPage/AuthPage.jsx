@@ -31,7 +31,7 @@ function AuthPage() {
         </h2>
       </div>
       {message && <h3>{message}</h3>}
-      <div className="mt-12 border-[1px] border-blue-300 rounded-lg shadow-lg p-8 flex flex-col gap-8 w-[100%] md:w-[60%] lg:w-[45%] xl:w-[30%] mx-auto">
+      <div className="mt-12 border-[1px] border-blue-300 rounded-lg shadow-lg p-8 flex flex-col gap-8 w-[100%] md:w-[60%] lg:w-[45%] xl:w-[35%] mx-auto">
         <h3 className="uppercase font-[900] bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent text-blue-900">
           #Carlife
         </h3>

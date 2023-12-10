@@ -1,19 +1,10 @@
 import CarCards from "../../components/cars/CarCards";
 import FilterNav from "../../components/cars/FilterNav";
 import { useSearchParams, useLoaderData, defer, Await } from "react-router-dom";
-import { Suspense } from "react";
-import getCars from "../../services/firebase/apiCars";
-
-export function loader() {
-  const cars = getCars();
-  console.log(cars);
-
-  return cars;
-}
 
 function CarsPage() {
   const [searchParams, setSearchPrams] = useSearchParams();
-  const carsData = useLoaderData();
+  const carsData = ["mikoka"];
 
   const typeFilter = searchParams.get("type");
   return (
@@ -22,13 +13,12 @@ function CarsPage() {
         Expand Driving Experience Horizons
       </h1>
       <FilterNav typeFilter={typeFilter} />
-      <Suspense fallback={<h1>Loading cars..</h1>}>
-        <CarCards
-          typeFilter={typeFilter}
-          searchParams={searchParams.toString()}
-          cars={carsData}
-        />
-      </Suspense>
+
+      <CarCards
+        typeFilter={typeFilter}
+        searchParams={searchParams.toString()}
+        cars={carsData}
+      />
     </section>
   );
 }
