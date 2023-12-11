@@ -1,13 +1,14 @@
 import ClassBadge from "./ClassBadge";
 
 function CarCard({ car }) {
+  console.log(car);
   return (
     <div className="bg-blue-100 rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
       <figure>
         <img
           className="aspect-video object-cover"
-          src={car.img}
-          alt={`Image of {car.make} {car.model}`}
+          src={car.imgs}
+          alt={`Image of ${car.make} ${car.model}`}
         />
       </figure>
       <div className="flex flex-col p-4 text-center gap-4 justify-between">

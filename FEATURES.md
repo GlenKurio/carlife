@@ -1,6 +1,10 @@
 # Auth:
 
-- Login with email, password
+✅
+
+# Host:
+
+- Update profile - name, image, email, password;
 
 # Hosted Cars:
 
@@ -15,3 +19,7 @@
 # Checkout
 
 - Stripe
+
+# ?? maybe ??
+
+- How to allow users to create accounts and separate them from hosts ?

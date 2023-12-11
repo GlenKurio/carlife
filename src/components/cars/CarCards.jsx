@@ -64,7 +64,7 @@ import CarCard from "./CarCard";
 //   },
 // ];
 
-function CarCards({ typeFilter, searchParams, cars }) {
+function CarCards({ typeFilter, searchParams, cars, isLoading }) {
   const displayCars = typeFilter
     ? cars.filter((car) => car.type.toLowerCase() === typeFilter)
     : cars;
@@ -72,12 +72,18 @@ function CarCards({ typeFilter, searchParams, cars }) {
     <div className="grid grid-cols-cards gap-x-4 gap-y-4 justify-center">
       {displayCars.length !== 0 ? (
         displayCars.map((car, idx) => (
-          <Link to={`/cars/${car.id}`} state={{ search: `?${searchParams}` }}>
-            <CarCard key={idx} car={car} />
+          <Link
+            key={idx}
+            to={`/cars/${car.id}`}
+            state={{ search: `?${searchParams}` }}
+          >
+            <CarCard car={car} />
           </Link>
         ))
+      ) : isLoading ? (
+        <div>Loading cars...</div>
       ) : (
-        <div>No cars to display</div>
+        <div>No cars matching this filter</div>
       )}
     </div>
   );
