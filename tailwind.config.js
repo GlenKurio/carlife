@@ -8,6 +8,8 @@ export default {
     extend: {
       backgroundImage: {
         "home-1": "url('/ghost.webp')",
+        "role-l": "url('/driving.webp')",
+        "role-r": "url('/exotics.webp')",
       },
       gridTemplateColumns: {
         // Grid for cards

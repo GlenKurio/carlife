@@ -1,7 +1,7 @@
 import useOrderStore from "../../store/orderStore";
 import { Link } from "react-router-dom";
-import CheckoutForm from "./CheckoutForm";
-import OrderSummary from "./OrderSummary";
+import CheckoutForm from "../../components/checkout/CheckoutForm";
+import OrderSummary from "../../components/checkout/OrderSummary";
 
 function Checkout() {
   const { order } = useOrderStore();

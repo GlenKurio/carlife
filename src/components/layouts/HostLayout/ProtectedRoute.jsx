@@ -1,4 +1,4 @@
-import {  useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFirebaseAuth from "../../../hooks/useFirebseAuthState";
 
 function ProtectedRoute({ children }) {
@@ -14,7 +14,7 @@ function ProtectedRoute({ children }) {
   }
 
   if (canRender) {
-    return <>{children}</>;
+    return children;
   }
 }
 

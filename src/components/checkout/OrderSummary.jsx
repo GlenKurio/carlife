@@ -1,4 +1,4 @@
-import ClassBadge from "../../components/cars/ClassBadge";
+import ClassBadge from "../cars/ClassBadge";
 function OrderSummary({ order }) {
   return (
     <article className="flex flex-col gap-2 p-4 border-blue-200 border-[1px] rounded-md shadow-md lg:w-1/3 lg:sticky lg:top-24 right-2">

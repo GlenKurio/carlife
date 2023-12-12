@@ -25,15 +25,15 @@ import Error from "./pages/Error";
 import LoginForm from "./components/auth/Login";
 import SignupForm from "./components/auth/Signup";
 import ProtectedRoute from "./components/layouts/HostLayout/ProtectedRoute";
-import Checkout from "./pages/Checkout/Checkout";
+import Checkout from "./pages/CheckoutPage/Checkout";
 import Success from "./pages/Success";
-import Role from "./pages/AuthPage/Role";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />} errorElement={<Error />} />
-        <Route path="role" element={<Role />} />
+
         <Route path="auth" element={<AuthPage errorElement={<Error />} />}>
           <Route index element={<LoginForm />} errorElement={<Error />} />
           <Route
