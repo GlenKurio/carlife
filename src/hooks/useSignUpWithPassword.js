@@ -2,11 +2,11 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, firestore } from "../services/firebase/firebase";
-import {} from "react-router-dom";
+import useAuthStore from "../store/authStore";
 function useSignup() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const loggedInUser = useAuthStore((state) => state.login);
   const signupWithEmailAndPassword = async ({ fullName, email, password }) => {
     try {
       setIsLoading(true);
@@ -33,7 +33,7 @@ function useSignup() {
 
       await setDoc(doc(firestore, "users", newUser.user.uid), userDoc);
       localStorage.setItem("user-info", JSON.stringify(userDoc));
-
+      loggedInUser(userDoc);
       setIsLoading(false);
       toast("Welcome", {
         icon: "🤗",

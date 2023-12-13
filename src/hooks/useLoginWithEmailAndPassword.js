@@ -4,10 +4,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { auth, firestore } from "../services/firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import useAuthStore from "../store/authStore";
 function useLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const loggedInUser = useAuthStore((state) => state.login);
+
   const loginWithEmailAndPassword = async ({ email, password }) => {
     try {
       setIsLoading(true);
@@ -20,7 +23,7 @@ function useLogin() {
         const docSnap = await getDoc(docRef);
         const userData = docSnap.data();
         localStorage.setItem("user-info", JSON.stringify(userData));
-
+        loggedInUser(userData);
         setIsLoading(false);
         toast("Welcome back!", {
           icon: "🤗",

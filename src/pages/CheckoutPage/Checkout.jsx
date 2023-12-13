@@ -9,7 +9,10 @@ function Checkout() {
   return (
     <>
       <header className="w-full bg-blue-500 bg-opacity-30 p-4">
-        <Link className="uppercase bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent font-black tracking-[3px] cursor-pointer hover:scale-110 duration-200 transition-all  mx-auto text-center flex justify-center w-1/2">
+        <Link
+          to="/"
+          className="uppercase bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent font-black tracking-[3px] cursor-pointer hover:scale-110 duration-200 transition-all  mx-auto text-center flex justify-center w-1/2"
+        >
           <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
             #
           </span>

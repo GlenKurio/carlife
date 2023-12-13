@@ -20,6 +20,8 @@ function CarDetailsPage() {
       <div className="grid place-content-center min-h-screen">Loading...</div>
     );
   }
+
+  console.log(carData);
   function handleClick() {
     // pass order through parameters
     const newOrder = {
@@ -36,7 +38,7 @@ function CarDetailsPage() {
 
     return navigate("/checkout");
   }
-  console.log(carData);
+
   return (
     <div className="min-h-screen p-8 flex flex-col ">
       <Link className="mt-12" to={`/cars/${search}`}>

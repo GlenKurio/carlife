@@ -8,17 +8,9 @@ function useGetCarDetails(id) {
   const [carData, setCarData] = useState({});
   const carId = id;
 
-  const cachedCarData = useMemo(() => new Map(), []);
-
   useEffect(() => {
     async function getCarDetails() {
       setIsLoading(true);
-
-      if (cachedCarData.has(carId)) {
-        setCarData(cachedCarData.get(carId));
-        setIsLoading(false);
-        return;
-      }
 
       const docRef = doc(firestore, "cars", carId);
 
@@ -28,7 +20,7 @@ function useGetCarDetails(id) {
         let carDetails = {};
         if (docSnap.exists()) {
           carDetails = { ...docSnap.data() };
-          cachedCarData.set(carId, carDetails);
+          localStorage.setItem("car-info", JSON.stringify(carDetails));
         }
 
         setCarData(carDetails);
@@ -41,7 +33,7 @@ function useGetCarDetails(id) {
     }
 
     getCarDetails();
-  }, [carId, cachedCarData]);
+  }, []);
 
   return { isLoading, carData };
 }
