@@ -3,16 +3,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firestore, storage } from "../services/firebase/firebase";
 import useAuthStore from "../store/authStore";
-import { collection, addDoc, arrayUnion, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  arrayUnion,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 import { toast } from "react-hot-toast";
-import useHostCarsStore from "../store/useHostCarsStore";
 
 function useAddCar() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
   const navigate = useNavigate();
-  const authUser = useAuthStore((state) => state.user);
-  const addCar = useHostCarsStore((state) => state.addCar);
+  const user = useAuthStore((state) => state.user);
 
   async function addCar(carInfo, selectedFile) {
     setIsLoading(true);
@@ -26,7 +30,7 @@ function useAddCar() {
       imgs: [],
       type: carInfo.type,
       description: carInfo.description,
-      host: authUser.uid,
+      host: user.uid,
     };
 
     try {
