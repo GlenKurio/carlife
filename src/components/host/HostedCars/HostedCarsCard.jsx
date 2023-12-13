@@ -5,7 +5,7 @@ function HostedCarsCard({ car }) {
     <Link to={`/host/cars/${car.id}`}>
       <article className="flex gap-4 rounded-md overflow-hidden shadow-md hover:shadow-lg transition-all duration-200 bg-blue-100">
         <img
-          src={car.img}
+          src={car.imgs}
           alt={`${car.make} ${car.model}`}
           className="aspect-video object-cover w-1/3"
         />

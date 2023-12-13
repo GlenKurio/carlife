@@ -27,6 +27,7 @@ import SignupForm from "./components/auth/Signup";
 import ProtectedRoute from "./components/layouts/HostLayout/ProtectedRoute";
 import Checkout from "./pages/CheckoutPage/Checkout";
 import Success from "./pages/Success";
+import AddHostedCarForm from "./components/host/HostedCars/AddHostedCarForm";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -69,6 +70,7 @@ const router = createBrowserRouter(
             element={<HostedCars />}
             errorElement={<Error />}
           />
+          <Route path="add-car" element={<AddHostedCarForm />} />
           <Route
             path="cars/:id"
             element={<HostedCarDetailsLayout />}
