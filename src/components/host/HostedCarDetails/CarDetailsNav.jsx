@@ -10,8 +10,8 @@ function CarDetailsNav() {
   return (
     <nav className="">
       <ul className="flex items-center justify-between ">
-        {detailsLinks.map((link) => (
-          <li>
+        {detailsLinks.map((link, idx) => (
+          <li key={idx}>
             <NavLink
               to={link.to}
               end

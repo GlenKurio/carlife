@@ -4,13 +4,11 @@
 
 # Host:
 
-- Update profile - name, image, email, password;
+- Update profile - email, password;
 
 # Hosted Cars:
 
-- Upload car
 - Update uploaded car
-- Delete car
 
 # Car details
 
