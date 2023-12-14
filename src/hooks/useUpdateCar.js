@@ -2,12 +2,15 @@ import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { firestore } from "../services/firebase/firebase";
 import { toast } from "react-hot-toast";
-
-function useUpdateCar(carData) {
+import useCarDataStore from "../store/useCarDataStore";
+function useUpdateCar() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState();
-  console.log(carData);
-  const { make, model, year, type, description, price, host, imgs } = carData;
+
+  const car = useCarDataStore((state) => state.car);
+  //   console.log(car);
+  const setCar = useCarDataStore((state) => state.setCar);
+  const { make, model, year, type, description, price, host, imgs, id } = car;
 
   async function updateCar(inputs) {
     if (isUpdating) return;
@@ -17,7 +20,7 @@ function useUpdateCar(carData) {
 
     const upImgs = [];
     const updatedCar = {
-      ...carData,
+      ...car,
       make: inputs.make || make,
       model: inputs.model || model,
       year: inputs.year || year,
@@ -29,6 +32,8 @@ function useUpdateCar(carData) {
 
     try {
       await updateDoc(carDocRef, updatedCar);
+      localStorage.setItem("car-info", JSON.stringify(updatedCar));
+      setCar(updatedCar);
       toast.success("Car successfully updated!");
     } catch (e) {
       toast.error(e.message);

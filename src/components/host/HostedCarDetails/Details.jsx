@@ -1,21 +1,20 @@
-import { useOutletContext } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useUpdateCar from "../../../hooks/useUpdateCar";
 import { toast } from "react-hot-toast";
+import useCarDataStore from "../../../store/useCarDataStore";
 
 function Details() {
-  // TODO: pass carData and CarId into useUpdateCar hook. Bring hook up to Details Layout ? will have acces to all 3 children forms
-  const carData = useOutletContext();
-  const carId = useOutletContext();
-  console.log(carData, carId);
   const { formState, handleSubmit, register } = useForm();
   const { errors } = formState;
+  const car = useCarDataStore((state) => state.car);
 
-  const { isUpdating, updateCar, error } = useUpdateCar(carData);
+  const { isUpdating, updateCar, error } = useUpdateCar();
 
   async function onSubmit(inputs) {
     await updateCar(inputs);
   }
+
+  if (error) toast.error(`There was an error: ${error}`);
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -37,7 +36,7 @@ function Details() {
           type="text"
           placeholder="Make"
           id="make"
-          defaultValue={carData.make}
+          defaultValue={car.make}
         />
       </label>
       {errors?.make?.message && (
@@ -61,7 +60,7 @@ function Details() {
           type="text"
           placeholder="Model"
           id="model"
-          defaultValue={carData.model}
+          defaultValue={car.model}
         />
       </label>
       {errors?.model?.message && (
@@ -85,7 +84,7 @@ function Details() {
           type="number"
           placeholder="Year"
           id="year"
-          defaultValue={carData.year}
+          defaultValue={car.year}
         />
       </label>
       {errors?.year?.message && (
@@ -110,7 +109,7 @@ function Details() {
           type="text"
           placeholder="Type"
           id="type"
-          defaultValue={carData.type}
+          defaultValue={car.type}
         >
           <option value="">--Select Category</option>
           <option value="luxury">Luxury</option>
@@ -141,7 +140,7 @@ function Details() {
           type="text"
           placeholder="Description"
           id="description"
-          defaultValue={carData.description}
+          defaultValue={car.description}
         />
       </label>
       {errors?.description?.message && (
@@ -150,7 +149,7 @@ function Details() {
         </span>
       )}
       <button className="w-full  bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95">
-        Save
+        {isUpdating ? " Saving changes ..." : "Save"}
       </button>
     </form>
   );

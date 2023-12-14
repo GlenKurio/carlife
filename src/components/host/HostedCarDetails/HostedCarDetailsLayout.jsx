@@ -1,10 +1,11 @@
 import { useParams, Outlet, Link } from "react-router-dom";
 import CarDetailsNav from "./CarDetailsNav";
 import useGetCarDetails from "../../../hooks/useGetCarDetails";
+
 function HostedCarDetailsLayout() {
   const params = useParams();
   const carId = params.id;
-  const { isLoading, carData } = useGetCarDetails(carId);
+  const { isLoading, car: carData } = useGetCarDetails(carId);
 
   if (isLoading)
     return (
@@ -34,7 +35,7 @@ function HostedCarDetailsLayout() {
           </figure>
           <CarDetailsNav carId={carId} />
         </article>
-        <Outlet context={(carData, carId)} />
+        <Outlet />
       </div>
     </>
   );

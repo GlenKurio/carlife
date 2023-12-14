@@ -2,10 +2,12 @@ import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState, useMemo } from "react";
 import { firestore } from "../services/firebase/firebase";
 import { toast } from "react-hot-toast";
+import useCarDataStore from "../store/useCarDataStore";
 
 function useGetCarDetails(id) {
   const [isLoading, setIsLoading] = useState(true);
-  const [carData, setCarData] = useState({});
+  const car = useCarDataStore((state) => state.car);
+  const setCar = useCarDataStore((state) => state.setCar);
   const carId = id;
 
   useEffect(() => {
@@ -19,14 +21,14 @@ function useGetCarDetails(id) {
 
         let carDetails = {};
         if (docSnap.exists()) {
-          carDetails = { ...docSnap.data() };
+          carDetails = { ...docSnap.data(), id: docSnap.id };
           localStorage.setItem("car-info", JSON.stringify(carDetails));
         }
 
-        setCarData(carDetails);
+        setCar(carDetails);
       } catch (e) {
         toast.error(e.message);
-        setCarData({});
+        setCar({});
       } finally {
         setIsLoading(false);
       }
@@ -35,7 +37,7 @@ function useGetCarDetails(id) {
     getCarDetails();
   }, []);
 
-  return { isLoading, carData };
+  return { isLoading, car };
 }
 
 export default useGetCarDetails;
