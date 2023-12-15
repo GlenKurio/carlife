@@ -26,8 +26,8 @@ function useUpdateCar() {
         const storageRefs = selectedFiles.map((file, idx) => {
           const uniqueId = uuidv4();
           console.log(uniqueId);
-          const uniqueFileName = `${car.id}-${uniqueId}`;
-          return ref(storage, `cars/${car.id}/${uniqueFileName}`);
+
+          return ref(storage, `cars/${car.id}/${uniqueId}`);
         });
         const uploadTasks = storageRefs.map((storageRef, index) =>
           uploadString(storageRef, selectedFiles[index], "data_url")

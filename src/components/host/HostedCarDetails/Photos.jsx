@@ -2,12 +2,14 @@ import useCarPreviewImgs from "../../../hooks/usePreviewCarImgs";
 import { useRef } from "react";
 import useCarDataStore from "../../../store/useCarDataStore";
 import useUpdateCar from "../../../hooks/useUpdateCar";
-
+import extractUidFromStorageURL from "../../../utils/extractUidFromURL";
+import useDeleteCarImg from "../../../hooks/useDeleteCarImg";
 function Photos() {
   const { selectedFiles, handleImageChange, setSelectedFiles } =
     useCarPreviewImgs();
   const { isUpdating, updateCar, error } = useUpdateCar();
   const car = useCarDataStore((state) => state.car);
+  const { isDeleting, handleDeleteCarImg } = useDeleteCarImg();
 
   const fileRef = useRef(null);
   // console.log(selectedFiles);
@@ -17,6 +19,15 @@ function Photos() {
 
     await updateCar(null, selectedFiles);
     setSelectedFiles(null);
+  }
+
+  async function handleClickDelete(e) {
+    if (isDeleting) return;
+    const uid = extractUidFromStorageURL(e.target.src);
+    const url = e.target.src;
+    console.log(uid);
+
+    await handleDeleteCarImg(uid, url);
   }
 
   return (
@@ -29,7 +40,12 @@ function Photos() {
               key={idx}
               className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
             >
-              <img className="w-full" src={img} alt="" />
+              <img
+                className="w-full"
+                src={img}
+                alt=""
+                onClick={handleClickDelete}
+              />
             </div>
           ))}
         </div>
