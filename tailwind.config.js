@@ -14,6 +14,7 @@ export default {
       gridTemplateColumns: {
         // Grid for cards
         cards: "repeat(auto-fit, minmax(300px, 1fr))",
+        hostCarImgs: "repeat(auto-fit, minmax(150px, 1fr))",
       },
     },
   },

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const detailsLinks = [
   { name: "Details", to: "." },
-  { name: "Pricing", to: "pricing" },
+  { name: "Availability", to: "availability" },
   { name: "Photos", to: "photos" },
 ];
 

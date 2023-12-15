@@ -124,6 +124,31 @@ function Details() {
         </span>
       )}
 
+      <label htmlFor="price" className="block">
+        <span className="inline-block text-left w-full text-sm font-semibold text-blue-950 after:content-['*'] after:ml-0.5 after:text-red-500 ">
+          Price for 1 day
+        </span>
+        <input
+          className={
+            errors?.price?.message
+              ? " bg-pink-100 focus:border-pink-500 text-pink-600 focus:ring-pink-500 placeholder:text-pink-500"
+              : ""
+          }
+          {...register("price", {
+            validate: (value) => value !== "" || "This field can`t be empty",
+          })}
+          type="number"
+          placeholder="Price"
+          id="price"
+          defaultValue={car.price}
+        />
+      </label>
+      {errors?.price?.message && (
+        <span className="bg-pink-200 text-xs text-pink-600 rounded-md py-1 mt-[-8px]">
+          {errors?.price?.message}
+        </span>
+      )}
+
       <label htmlFor="description" className="block">
         <span className="inline-block text-left w-full text-sm font-semibold text-blue-950 after:content-['*'] after:ml-0.5 after:text-red-500 ">
           Description

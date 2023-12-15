@@ -36,7 +36,11 @@ function useAddCar() {
     try {
       const carDocRef = await addDoc(collection(firestore, "cars"), newCar);
       const userDocRef = doc(firestore, "users", user.uid);
-      const imageRef = ref(storage, `cars/${carDocRef.id}`);
+      const uniqueId = uuidv4();
+      const imageRef = ref(
+        storage,
+        `cars/${carDocRef.id}/${carDocRef.id}-${uniqueId}`
+      );
 
       await updateDoc(userDocRef, { cars: arrayUnion(carDocRef.id) });
       await uploadString(imageRef, selectedFile, "data_url");

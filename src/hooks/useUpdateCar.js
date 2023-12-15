@@ -1,8 +1,9 @@
 import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
-import { firestore } from "../services/firebase/firebase";
+import { firestore, storage } from "../services/firebase/firebase";
 import { toast } from "react-hot-toast";
 import useCarDataStore from "../store/useCarDataStore";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
 function useUpdateCar() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState();
@@ -11,26 +12,46 @@ function useUpdateCar() {
   //   console.log(car);
   const setCar = useCarDataStore((state) => state.setCar);
   const { make, model, year, type, description, price, host, imgs, id } = car;
-
-  async function updateCar(inputs) {
+  //   console.log(imgs);
+  async function updateCar(inputs, selectedFiles) {
     if (isUpdating) return;
     setIsUpdating(true);
     setError(null);
     const carDocRef = doc(firestore, "cars", id);
-
-    const upImgs = [];
-    const updatedCar = {
-      ...car,
-      make: inputs.make || make,
-      model: inputs.model || model,
-      year: inputs.year || year,
-      type: inputs.type || type,
-      price: inputs.price || price,
-      description: inputs.description || description,
-      imgs: imgs,
-    };
-
+    console.log(selectedFiles);
     try {
+      if (selectedFiles.length !== 0) {
+        const storageRefs = selectedFiles.map((file, idx) => {
+          const uniqueId = uuidv4(); // Generate a UUID
+          const uniqueFileName = `${car.id}-${uniqueId}`;
+          ref(storage, `cars/${car.id}/${uniqueFileName}`);
+        });
+        const uploadTasks = storageRefs.map((storageRef, index) =>
+          uploadString(storageRef, selectedFiles[index], "data_url")
+        );
+
+        await Promise.all(uploadTasks);
+
+        const downloadURLs = await Promise.all(
+          storageRefs.map((storageRef) => getDownloadURL(storageRef))
+        );
+        var newImgs = [...car.imgs];
+        newImgs.push(...downloadURLs);
+
+        setCar({ ...car, imgs: newImgs });
+      }
+
+      const updatedCar = {
+        ...car,
+        make: inputs?.make || make,
+        model: inputs?.model || model,
+        year: inputs?.year || year,
+        type: inputs?.type || type,
+        price: inputs?.price || price,
+        description: inputs?.description || description,
+        imgs: newImgs,
+      };
+
       await updateDoc(carDocRef, updatedCar);
       localStorage.setItem("car-info", JSON.stringify(updatedCar));
       setCar(updatedCar);

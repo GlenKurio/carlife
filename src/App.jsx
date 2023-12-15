@@ -18,7 +18,7 @@ import Reviews from "./pages/Host/Reviews";
 import HostedCars from "./components/host/HostedCars/HostedCars";
 import HostedCarDetailsLayout from "./components/host/HostedCarDetails/HostedCarDetailsLayout";
 import Details from "./components/host/HostedCarDetails/Details";
-import Pricing from "./components/host/HostedCarDetails/Pricing";
+import Availability from "./components/host/HostedCarDetails/Availability";
 import Photos from "./components/host/HostedCarDetails/Photos";
 import NotFoundPage from "./pages/NotFoundPage";
 import Error from "./pages/Error";
@@ -78,8 +78,8 @@ const router = createBrowserRouter(
           >
             <Route index element={<Details />} errorElement={<Error />} />
             <Route
-              path="pricing"
-              element={<Pricing />}
+              path="availability"
+              element={<Availability />}
               errorElement={<Error />}
             />
             <Route
