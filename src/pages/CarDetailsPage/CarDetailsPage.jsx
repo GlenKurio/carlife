@@ -10,29 +10,29 @@ function CarDetailsPage() {
   const location = useLocation();
   const search = location.state?.search || "";
   const carId = params.id;
-  const { isLoading, carData } = useGetCarDetails(carId);
+  console.log(carId);
+  const { isLoading, car } = useGetCarDetails(carId);
   const [range, setRange] = useState(1);
-  const total = carData.price * range;
   const { order, setOrder } = useOrderStore();
 
-  if (isLoading && !carData) {
+  if (isLoading && !car) {
     return (
       <div className="grid place-content-center min-h-screen">Loading...</div>
     );
   }
+  const total = car.price * range;
 
-  console.log(carData);
   function handleClick() {
     // pass order through parameters
     const newOrder = {
       total: total,
       carId: carId,
       range: range,
-      make: carData.make,
-      model: carData.model,
-      img: carData.imgs[0],
-      price: carData.price,
-      type: carData.type,
+      make: car.make,
+      model: car.model,
+      img: car.imgs[0],
+      price: car.price,
+      type: car.type,
     };
     setOrder(newOrder);
 
@@ -47,17 +47,17 @@ function CarDetailsPage() {
 
       <article className="mt-8 w-full mx-auto flex flex-col items-center gap-4">
         <div className="w-full flex justify-center">
-          <img className="w-full md:max-w-[80%] " src={carData.imgs} alt="" />
+          <img className="w-full md:max-w-[80%] " src={car.imgs} alt="" />
         </div>
         <h1 className="text-4xl text-center font-bold text-blue-950">
-          {carData.make} {carData.model}
+          {car.make} {car.model}
         </h1>
         <div className="flex items-center justify-between w-full">
-          <ClassBadge type={carData.type} />
+          <ClassBadge type={car.type} />
 
-          <span>${carData.price} / day</span>
+          <span>${car.price} / day</span>
         </div>
-        <p className="text-lg">{carData.description}</p>
+        <p className="text-lg">{car.description}</p>
 
         <label
           htmlFor="range"

@@ -1,28 +1,30 @@
-# Auth:
-
-✅
-
 # Host:
 
 - Update profile - email, password;
 
-# Hosted Cars:
-
-- Update uploaded car
-
 # Car details
 
-- Longevity x price calculator
 - Allow to choose dates with ranges for rent
 
 # Checkout
 
 - Stripe
 
-### FIXES
+# Hosted Cars
 
 - Add pagination in hosted cars and in cars for users
-- Re-renders and re-fetching data on car details page, when changing range-state
+- Add filters or sorting to hosted cars;
+
+# Dashboard
+
+- Display orders in dashboard
+- Allow sort and filter in dashboard - by date, by car
+- Add pagination or upload on scroll
+
+# Income
+
+- Display graph for some period of time, allow to choose period of time
+- Display income by car, by car class,
 
 # ?? maybe ??
 

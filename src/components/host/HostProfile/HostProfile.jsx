@@ -8,8 +8,8 @@ function HostProfile() {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <section className="p-4 flex items-center justify-center gap-4 ">
-      <div className=" max-w-[80px] max-h-[80px] rounded-full overflow-hidden border-[1px] border-blue-700 ">
+    <section className="py-4 flex items-center justify-center gap-4 ">
+      <div className=" max-w-[80px] max-h-[80px] rounded-full overflow-hidden shadow-lg">
         <img
           className="object-cover"
           src={profile.profilePicURL || "/avatar-placeholder.png"}

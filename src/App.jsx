@@ -70,6 +70,7 @@ const router = createBrowserRouter(
             element={<HostedCars />}
             errorElement={<Error />}
           />
+
           <Route path="add-car" element={<AddHostedCarForm />} />
           <Route
             path="cars/:id"
@@ -100,7 +101,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
       <Toaster
         position="top-center"
         gutter={12}

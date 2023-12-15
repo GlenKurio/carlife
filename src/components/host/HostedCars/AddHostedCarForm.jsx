@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { toast } from "react-hot-toast";
 import usePreviewImg from "../../../hooks/usePreviewImg";
 import useAddCar from "../../../hooks/useAddCar";
-
+import { Link } from "react-router-dom";
 function AddHostedCarForm() {
   const { reset, register, formState, handleSubmit, getValues } = useForm();
   const { errors } = formState;
@@ -28,13 +28,19 @@ function AddHostedCarForm() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col gap-8 ">
-      <h1 className="text-center text-3xl font-bold text-blue-950 mt-8 ">
+    <div className="min-h-min flex flex-col gap-4 pb-4">
+      <Link
+        to="/host/cars"
+        className="text-xl font-medium mt-4 inline-block text-blue-600  hover:text-blue-500"
+      >
+        &larr; <span className="hover:underline">Back to all cars</span>
+      </Link>
+      <h1 className="text-center text-3xl font-bold text-blue-950 mt-4 ">
         Add new car
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="my-2 flex flex-col gap-4 md:w-[50%] md:mx-auto border-[1px] border-solid border-blue-700 shadow-lg p-4 rounded-lg"
+        className="mt-2 mb-8 flex flex-col gap-4 md:w-[50%] md:mx-auto border-[1px] border-solid border-blue-700 shadow-lg p-4 rounded-lg"
       >
         {" "}
         <span className="inline-block text-left w-full text-sm font-semibold text-blue-950 after:content-['*'] after:ml-0.5 after:text-red-500 -mb-3">

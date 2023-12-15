@@ -25,7 +25,10 @@ function EditProfileForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 mt-8"
     >
-      <label className="flex gap-8 items-center justify-center">
+      <span className="inline-block text-left w-full text-sm font-semibold text-blue-950 mb-[-10px]">
+        Profile image
+      </span>
+      <label className="flex gap-8 items-center justify-start">
         <div className="h-16 w-16 rounded-full object-cover overflow-hidden object-center">
           <img
             src={
