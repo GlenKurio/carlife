@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { firestore, storage } from "../services/firebase/firebase";
 import useAuthStore from "../store/authStore";
+import { v4 as uuidv4 } from "uuid";
 import {
   collection,
   addDoc,

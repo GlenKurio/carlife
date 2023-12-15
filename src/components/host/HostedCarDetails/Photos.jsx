@@ -25,23 +25,27 @@ function Photos() {
         <h2>Current images on listing:</h2>
         <div className="grid gap-2 grid-cols-hostCarImgs">
           {car.imgs.map((img, idx) => (
-            <div className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 ">
-              <img className="w-full" src={img} alt="" key={idx} />
+            <div
+              key={idx}
+              className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
+            >
+              <img className="w-full" src={img} alt="" />
             </div>
           ))}
         </div>
       </article>
       <form>
-        {/* TODO: fix click on image. Make click on image to delete the image */}
         <label className="grid gap-2 grid-cols-hostCarImgs">
           {selectedFiles &&
             selectedFiles.map((file, idx) => (
-              <div className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 ">
+              <div
+                key={idx}
+                className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
+              >
                 <img
                   className="w-full"
                   src={file || "/car-placeholder.webp"}
                   alt=""
-                  key={idx}
                 />
               </div>
             ))}
