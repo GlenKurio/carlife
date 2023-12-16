@@ -17,7 +17,10 @@ function FilterNav({ typeFilter }) {
     suv: "bg-gradient-to-r from-emerald-500 to-teal-500",
   };
   return (
-    <div className="mt-16 mb-8 text-center grid grid-cols-2 gap-2 py-4 md:grid-cols-5 justify-between px-8 border-y-[1px] border-blue-200">
+    <div className="mt-8 mb-8 text-center grid grid-cols-2 gap-2 py-4 md:grid-cols-6 items-center  justify-between px-8 border-y-[1px] border-blue-200">
+      <h2 className="col-span-2 md:col-span-1 font-semibold bg-gradient-to-r from-sky-500 to-indigo-500 text-lg bg-clip-text text-transparent">
+        Filter by class:
+      </h2>
       {filters.map((filter, idx) => (
         <Link
           key={idx}

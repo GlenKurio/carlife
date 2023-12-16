@@ -25,8 +25,11 @@ function CheckoutForm({ order }) {
     return toast.error(error);
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} className="min-h-[150vh]">
+    <>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="min-h-min flex flex-col gap-4"
+      >
         <label htmlFor="fullname" className="block">
           <span className="inline-block text-left w-full text-sm font-semibold text-blue-950 after:content-['*'] after:ml-0.5 after:text-red-500 ">
             Full Name
@@ -79,10 +82,14 @@ function CheckoutForm({ order }) {
             {errors?.email?.message}
           </span>
         )}
-
-        <button> {isLoading ? "Placing order ..." : "Place order"} </button>
+        <button
+          disabled={isLoading}
+          className="w-full md:w-1/3  bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95"
+        >
+          {isLoading ? "Placing order ..." : "Place order"}
+        </button>
       </form>
-    </div>
+    </>
   );
 }
 

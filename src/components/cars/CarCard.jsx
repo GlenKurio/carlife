@@ -1,7 +1,6 @@
 import ClassBadge from "./ClassBadge";
 
 function CarCard({ car }) {
-  console.log(car);
   return (
     <div className="bg-blue-100 rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
       <figure>

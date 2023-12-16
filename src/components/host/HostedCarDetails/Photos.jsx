@@ -31,27 +31,31 @@ function Photos() {
   }
 
   return (
-    <section className="py-8">
-      <article>
-        <h2>Current images on listing:</h2>
-        <div className="grid gap-2 grid-cols-hostCarImgs">
-          {car.imgs.map((img, idx) => (
-            <div
-              key={idx}
-              className="max-h-full max-w-full bg-yellow-200 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
-            >
-              <img
-                className="w-full"
-                src={img}
-                alt=""
-                onClick={handleClickDelete}
-              />
-            </div>
-          ))}
-        </div>
-      </article>
-      <form>
-        <label className="grid gap-2 grid-cols-hostCarImgs">
+    <section className="pb-8 bg-blue-50 w-screen -mx-4  px-4">
+      <h2 className="text-2xl font-semibold my-2 text-center">
+        Update Car Photos
+      </h2>
+      <h3 className="font-semibold mb-2">Current photos on listing:</h3>
+
+      <div className="grid gap-2 grid-cols-hostCarImgs grid-rows-hostCarImgsRows items-center justify-center md:justify-start">
+        {car.imgs.map((img, idx) => (
+          <div
+            key={idx}
+            className="max-h-full max-w-full bg-blue-100 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
+          >
+            <img
+              className="w-full"
+              src={img}
+              alt=""
+              onClick={handleClickDelete}
+            />
+          </div>
+        ))}
+      </div>
+
+      <h3 className="font-semibold mt-6 mb-2">Selected photos:</h3>
+      <form className="flex flex-col gap-4">
+        <label className="grid gap-2 grid-cols-hostCarImgs grid-rows-hostCarImgsRows items-center justify-center md:justify-start">
           {selectedFiles &&
             selectedFiles.map((file, idx) => (
               <div
@@ -66,7 +70,7 @@ function Photos() {
               </div>
             ))}
           <span
-            className="cursor-pointer aspect-video w-full max-h-full grid font-semibold place-content-center  bg-blue-200 rounded-md text-sm hover:bg-blue-300"
+            className="cursor-pointer aspect-video w-full max-h-full grid font-semibold place-content-center  bg-blue-200 rounded-md text-sm hover:bg-blue-300 "
             onClick={() => fileRef.current.click()}
           >
             + Add Images (up to 10)
@@ -80,10 +84,11 @@ function Photos() {
           />
         </label>
         <button
+          disabled={isUpdating}
           onClick={handleSubmit}
-          className="w-full  bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95"
+          className="w-full md:w-1/3  bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95"
         >
-          Save
+          {isUpdating ? "Saving changes" : "Save"}
         </button>
       </form>
     </section>

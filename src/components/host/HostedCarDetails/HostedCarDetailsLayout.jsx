@@ -9,7 +9,11 @@ function HostedCarDetailsLayout() {
 
   if (isLoading)
     return (
-      <div className="min-h-screen grid place-content-center">Loading...</div>
+      <div className="animate-pulse min-h-[50vh] grid place-content-center uppercase bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent font-black tracking-[3px] cursor-pointer hover:text-amber-50 duration-200 transition-all ">
+        <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
+          # CarLife
+        </span>
+      </div>
     );
 
   return (
@@ -22,8 +26,8 @@ function HostedCarDetailsLayout() {
         &larr; <span className="hover:underline">Back to all cars</span>
       </Link>
       <div className="h-[300px] w-full mt-2 ">
-        <article className="py-2 border-y-[1px] border-solid border-blue-900 flex-col gap-2 flex">
-          <figure className="flex items-center gap-6">
+        <article className="py-2  flex-col gap-2 flex">
+          <figure className="relative flex items-center gap-6">
             <img
               src={carData.imgs[0]}
               alt={carData.make}

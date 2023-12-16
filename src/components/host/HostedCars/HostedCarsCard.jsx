@@ -9,7 +9,7 @@ function HostedCarsCard({ car }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   const { isDeleting, handleDeleteCar } = useDeleteCar();
-  console.log(car.id);
+
   async function handleClick() {
     const id = car.id;
 

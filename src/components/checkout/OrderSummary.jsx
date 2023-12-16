@@ -5,17 +5,15 @@ function OrderSummary({ order }) {
       <h2 className="text-center text-3xl font-medium text-blue-900 mb-8">
         Your Order:
       </h2>
-      <div className="w-full flex items-center border-b-[1px] border-solid pb-2 border-blue-200 justify-center">
+      <div className="w-full flex items-center border-b-[1px] border-solid pb-2 border-blue-200 justify-between gap-2">
         <img
           className="w-1/3 rounded-md"
           src={order.img}
           alt={`img of ${order.make} ${order.model}`}
         />
-        <span className="mx-auto font-semibold text-2xl text-blue-950 md:text-1xl md:text-center">
+        <span className="mx-auto font-semibold md:text-2xl text-blue-950 text-lg md:text-center">
           {order.make} {order.model}
         </span>
-
-        <ClassBadge type={order.type} />
       </div>
       <div className="text-xl w-full flex items-center border-b-[1px] border-solid pb-2 border-blue-200 justify-between">
         <span>Price for 1 day: </span>

@@ -11,9 +11,13 @@ function HostedCars() {
 
   if (isLoading)
     return (
-      <div className="h-screen grid place-content-center">Loading cars...</div>
+      <div className="animate-pulse min-h-[50vh] grid place-content-center uppercase bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent font-black tracking-[3px] cursor-pointer hover:text-amber-50 duration-200 transition-all ">
+        <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
+          # CarLife
+        </span>
+      </div>
     );
-  console.log(cars);
+
   if (error) toast.error(error.message);
   return (
     <>

@@ -5,7 +5,7 @@ import HostProfile from "../../host/HostProfile/HostProfile";
 
 function HostPage() {
   return (
-    <section className="min-h-screen pt-16 px-4">
+    <section className="min-h-screen pt-16 px-4 bg-blue-50">
       <div className="flex justify-between">
         <HostProfile />
         <LogoutButton />
