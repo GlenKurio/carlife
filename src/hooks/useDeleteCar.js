@@ -15,6 +15,7 @@ function useDeleteCar() {
     if (isDeleting) return;
 
     try {
+      // How not allow to delete listing until all images are deleted
       setIsDeleting(true);
       const imageRef = ref(storage, `cars/${id}`);
       await deleteObject(imageRef);

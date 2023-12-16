@@ -5,8 +5,10 @@ function CarCard({ car }) {
     <div className="bg-blue-100 rounded-md overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
       <figure>
         <img
-          className="aspect-video object-cover"
-          src={car.imgs}
+          className={
+            car?.imgs.length > 0 ? "aspect-video object-cover" : " mx-auto"
+          }
+          src={car?.imgs.length > 0 ? car.imgs : "/car-placeholder.webp"}
           alt={`Image of ${car.make} ${car.model}`}
         />
       </figure>

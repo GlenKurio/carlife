@@ -50,7 +50,11 @@ function CarDetailsPage() {
 
       <article className="mt-4 w-full mx-auto flex flex-col items-center gap-4">
         <div className="w-full flex justify-center">
-          <img className="w-full md:max-w-[80%] " src={car.imgs} alt="" />
+          <img
+            className="w-full md:max-w-[80%] "
+            src={car?.imgs.length > 0 ? car.imgs : "/car-placeholder.webp"}
+            alt=""
+          />
         </div>
         <div className="flex flex-col gap-2 md:w-[80%]">
           <h1 className="text-4xl text-center font-bold text-blue-950">

@@ -8,7 +8,7 @@ const logos = [
   { src: "/public/featured/usa-today.png" },
 ];
 
-function Featured() {
+function FeaturedIn() {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Featured() {
   return (
     <section className="overflow-hidden">
       <h2 className="text-2xl text-center font-bold text-blue-950 md:mb-[-2rem]">
-        As Featured in
+        Featured in
       </h2>
       <article className="flex items-center  w-[200vw] px-1 md:px-5">
         {/* px - on article equal to gap-10 between each div with logo. Which gives us smooth animation restart */}
@@ -54,4 +54,4 @@ function Images() {
   ));
 }
 
-export default Featured;
+export default FeaturedIn;

@@ -29,7 +29,7 @@ function HostedCarDetailsLayout() {
         <article className="py-2  flex-col gap-2 flex">
           <figure className="relative flex items-center gap-6">
             <img
-              src={carData.imgs[0]}
+              src={carData.imgs[0] || "/car-placeholder.webp"}
               alt={carData.make}
               className="max-w-[30%] rounded-md shadow-md"
             />

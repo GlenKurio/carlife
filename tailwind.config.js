@@ -13,7 +13,7 @@ export default {
       },
       gridTemplateColumns: {
         // Grid for cards
-        cards: "repeat(auto-fit, minmax(300px, 1fr))",
+        cards: "repeat(auto-fit, minmax(300px, 600px))",
         hostCarImgs: "repeat(auto-fit, minmax(150px, 400px))",
       },
       gridTemplateRows: {

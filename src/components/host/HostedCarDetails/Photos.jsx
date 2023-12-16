@@ -38,19 +38,34 @@ function Photos() {
       <h3 className="font-semibold mb-2">Current photos on listing:</h3>
 
       <div className="grid gap-2 grid-cols-hostCarImgs grid-rows-hostCarImgsRows items-center justify-center md:justify-start">
-        {car.imgs.map((img, idx) => (
-          <div
-            key={idx}
-            className="max-h-full max-w-full bg-blue-100 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
-          >
-            <img
-              className="w-full"
-              src={img}
-              alt=""
-              onClick={handleClickDelete}
-            />
+        {car?.imgs.length > 0 ? (
+          car.imgs.map((img, idx) => (
+            <div
+              key={idx}
+              className="max-h-full max-w-full bg-blue-100 rounded-md object-cover overflow-hidden shadow-md hover:scale-105 cursor-pointer transition-all duration-200 "
+            >
+              <img
+                className="w-full"
+                src={img}
+                alt=""
+                onClick={handleClickDelete}
+              />
+            </div>
+          ))
+        ) : (
+          <div>
+            <fogure className="relative  ">
+              <img
+                className="w-full rounded-lg"
+                src="/car-placeholder.webp"
+                alt="palceholder image with car"
+              />
+              <figcaption className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-blue-400 font-bold text-xl w-[80%] text-center">
+                No imgs on this listing
+              </figcaption>
+            </fogure>
           </div>
-        ))}
+        )}
       </div>
 
       <h3 className="font-semibold mt-6 mb-2">Selected photos:</h3>
