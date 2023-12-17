@@ -35,7 +35,7 @@ function HostedCars() {
             + Add new car
           </Link>
         </div>
-        <div className="grid grid-cols-cards gap-4">
+        <div className="grid grid-cols-cards gap-4 justify-center">
           {cars.map((hCar) => (
             <HostedCarsCard car={hCar} key={hCar.id} />
           ))}

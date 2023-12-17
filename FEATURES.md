@@ -11,10 +11,7 @@
 # Host:
 
 - Update profile - email, password;
-
-# Car details
-
-- Allow to choose dates with ranges for rent
+- Delete car fix
 
 # Checkout
 
@@ -35,6 +32,10 @@
 
 - Display graph for some period of time, allow to choose period of time
 - Display income by car, by car class,
+
+# Car details
+
+- Allow to choose dates with ranges for rent
 
 # Last touches
 

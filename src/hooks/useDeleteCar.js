@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useHostCarsStore from "../store/useHostCarsStore";
-import { deleteObject, ref } from "firebase/storage";
+import { deleteObject, listAll, ref } from "firebase/storage";
 import { storage, firestore } from "../services/firebase/firebase";
 import useAuthStore from "../store/authStore";
 import { arrayRemove, updateDoc, doc, deleteDoc } from "firebase/firestore";
@@ -15,10 +15,14 @@ function useDeleteCar() {
     if (isDeleting) return;
 
     try {
-      // How not allow to delete listing until all images are deleted
       setIsDeleting(true);
-      const imageRef = ref(storage, `cars/${id}`);
-      await deleteObject(imageRef);
+      // const imageRef = ref(storage, `cars/${id}`);
+      // await deleteObject(imageRef);
+      const imagesRef = ref(storage, "cars");
+      const { items } = await listAll(imagesRef);
+      const imagesToDelete = items.filter((item) => item.name.includes(id));
+      const deletePromises = imagesToDelete.map((image) => deleteObject(image));
+      await Promise.all(deletePromises);
       const userRef = doc(firestore, "users", user.uid);
       await deleteDoc(doc(firestore, "cars", id));
 

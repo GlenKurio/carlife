@@ -10,10 +10,11 @@ function useDeleteCarImg() {
   const car = useCarDataStore((state) => state.car);
   const setCar = useCarDataStore((state) => state.setCar);
   async function handleDeleteCarImg(uid, url) {
+    console.log(uid);
     if (isDeleting) return;
     try {
       setIsDeleting(true);
-      const imageRef = ref(storage, `cars/${car.id}/${uid}`);
+      const imageRef = ref(storage, `cars/${uid}`);
       const carDocRef = doc(firestore, "cars", car.id);
       await deleteObject(imageRef);
       await updateDoc(carDocRef, { imgs: arrayRemove(url) });
