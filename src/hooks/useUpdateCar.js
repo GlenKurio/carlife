@@ -25,7 +25,6 @@ function useUpdateCar() {
       if (selectedFiles.length !== 0) {
         const storageRefs = selectedFiles.map((file, idx) => {
           const uniqueId = uuidv4();
-          console.log(uniqueId);
 
           return ref(storage, `cars/${car.id}-${uniqueId}`);
         });

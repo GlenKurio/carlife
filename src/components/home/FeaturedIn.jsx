@@ -17,7 +17,7 @@ function FeaturedIn() {
   }, []);
   return (
     <section className="overflow-hidden">
-      <h2 className="text-2xl text-center font-bold text-blue-950 md:mb-[-2rem]">
+      <h2 className="text-4xl text-center font-bold text-blue-950 md:mb-[-2rem]">
         Featured in
       </h2>
       <article className="flex items-center  w-[200vw] px-1 md:px-5">
