@@ -3,6 +3,7 @@ import { useRef } from "react";
 import useGetCars from "../../hooks/useGetCars";
 import { Link } from "react-router-dom";
 import ClassBadge from "../cars/ClassBadge";
+import Reveal from "./animations/Reveal";
 
 function FeaturedCars() {
   const { isLoading, cars } = useGetCars();
@@ -38,9 +39,6 @@ const HorizontalScrollCarousel = ({ cars }) => {
       ref={targetRef}
       className="relative h-[300vh] bg-gradient-to-br from-sky-500/60 to-indigo-500/60 pt-8"
     >
-      <p className="text-blue-950 text-center text-4xl font-bold -mb-8">
-        Featured Cars
-      </p>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex  gap-4">
           {carsToDisplay.map((car, idx) => {
@@ -60,15 +58,13 @@ const HorizontalScrollCarousel = ({ cars }) => {
 
 const Card = ({ car }) => {
   return (
-    <div className="group relative h-[450px] w-[650px] overflow-hidden bg-blue-50 rounded-lg">
+    <div className="group relative h-[550px] w-[350px] md:w-[850px] overflow-hidden bg-blue-50 rounded-lg">
       <Link to={`/cars/${car.id}`}>
         <div
           style={{
             backgroundImage: `url(${car.imgs[0]})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
-          className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
+          className="bg-cover bg-center md:bg-center absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
         ></div>
         <div className="absolute inset-0 z-10 ">
           <p className="bg-gradient-to-br from-sky-500/20 to-indigo-500/20 p-2 text-2xl font-black uppercase text-white backdrop-blur-sm text-center">
