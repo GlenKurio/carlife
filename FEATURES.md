@@ -1,21 +1,9 @@
 **_ Design _**
 
-- Home page overall design - more sections, carousel
 - Car details page : carousel\gallery
 - Host/reviews: reviews placeholders
-- Navbar
-- Footer
 
 **_ Functionality _**
-
-# Host:
-
-- Update profile - email, password;
-- Delete car fix
-
-# Checkout
-
-- Stripe
 
 # Hosted Cars
 
@@ -33,15 +21,23 @@
 - Display graph for some period of time, allow to choose period of time
 - Display income by car, by car class,
 
-# Car details
+# Host:
 
-- Allow to choose dates with ranges for rent
+- Update profile - email, password;
+
+# Checkout
+
+- Stripe
 
 # Last touches
 
 - Rules on Firebase
 
 ### ?? maybe ??
+
+# Car details
+
+- Allow to choose dates with ranges for rent
 
 - How to allow users to create accounts and separate them from hosts ?
 - Customers login & signup;

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 function Fleet() {
   return (
-    <div className="md:flex md:items-start md:gap-8 md:flex-row-reverse md:my-16">
+    <div className="md:flex md:items-start md:gap-8 md:flex-row-reverse md:my-16 overflow-hidden">
       <motion.p
         variants={{
           hidden: { opacity: 0, x: 100 },
@@ -13,7 +13,7 @@ function Fleet() {
         transition={{
           duration: 0.5,
         }}
-        className="text-lg leading-8 md:w-1/2  md:text-2xl md:leading-[1.8] md:text-center"
+        className="text-lg leading-10 text-center tracking-[1px]  md:w-1/2  md:text-2xl md:leading-[1.8] md:text-center overflow-hidden"
       >
         By teaming up with these iconic brands, we've curated a selection of
         automobiles that encapsulate innovation, prestige, and unparalleled
@@ -32,10 +32,10 @@ function Fleet() {
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="my-8 grid grid-cols-3 grid-rows-3 gap-1 md:w-1/2 md:my-2"
+        className="my-8 grid grid-cols-3 grid-rows-3 gap-1 md:w-1/2 md:my-2 "
       >
         {imgs.map((img, idx) => (
-          <div key={idx} className="group overflow-hidden rounded-md">
+          <div key={idx} className="group  rounded-md">
             <div
               className=" bg-cover bg-center w-full h-[150px] group-hover:scale-110 transition-all duration-1000 "
               style={{ backgroundImage: `url(${img})` }}

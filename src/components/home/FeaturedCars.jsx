@@ -3,7 +3,6 @@ import { useRef } from "react";
 import useGetCars from "../../hooks/useGetCars";
 import { Link } from "react-router-dom";
 import ClassBadge from "../cars/ClassBadge";
-import Reveal from "./animations/Reveal";
 
 function FeaturedCars() {
   const { isLoading, cars } = useGetCars();

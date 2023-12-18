@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 function Reveal({ children }) {
   return (
-    <div className="relative w-min-content overflow-hidden">
+    <div className=" w-min-content ">
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 75 },

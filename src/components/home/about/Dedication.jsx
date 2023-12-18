@@ -12,7 +12,7 @@ function Dedication() {
       viewport={{ once: true }}
       transition={{ duration: 1 }}
     >
-      <p className="text-lg mb-4 leading-8 md:text-2xl md:leading-[1.8] md:text-center md:max-w-[54ch] md:mx-auto">
+      <p className="text-lg tracking-[1px] text-center mb-4 leading-10 md:text-2xl md:leading-[1.8] md:text-center md:max-w-[54ch] md:mx-auto">
         Our dedication to providing you with access to these legendary vehicles
         goes beyond mere transportation; it's about creating unforgettable
         moments and fulfilling dreams. We invite you to explore our collection,

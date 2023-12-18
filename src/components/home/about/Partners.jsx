@@ -13,7 +13,7 @@ function Partners() {
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="text-lg  leading-8 md:w-1/2 md:text-center md:text-2xl md:leading-[1.8]"
+        className="text-lg text-center tracking-[1px]  leading-10 md:w-1/2 md:text-center md:text-2xl md:leading-[1.8]"
       >
         We've forged partnerships with renowned car manufacturers like Bentley,
         Rolls-Royce, Koenigsegg, Porsche, and Bugatti to bring you a collection
