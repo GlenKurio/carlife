@@ -17,7 +17,7 @@ function HostedCarDetailsLayout() {
     );
 
   return (
-    <>
+    <section className="min-h-screen">
       <Link
         to=".."
         relative="path"
@@ -39,9 +39,10 @@ function HostedCarDetailsLayout() {
           </figure>
           <CarDetailsNav carId={carId} />
         </article>
+
         <Outlet />
       </div>
-    </>
+    </section>
   );
 }
 

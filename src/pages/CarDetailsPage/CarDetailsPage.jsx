@@ -3,6 +3,7 @@ import useGetCarDetails from "../../hooks/useGetCarDetails";
 import { useState } from "react";
 import ClassBadge from "../../components/cars/ClassBadge";
 import useOrderStore from "../../store/orderStore";
+import CarDetailsCarousel from "../../components/cars/carDetailsPage/CarImgGallery";
 
 function CarDetailsPage() {
   const navigate = useNavigate();
@@ -48,24 +49,23 @@ function CarDetailsPage() {
         &larr; Go back to {search?.split("=")[1]} cars
       </Link>
 
-      <article className="mt-4 w-full mx-auto flex flex-col items-center gap-4">
-        <div className="w-full flex justify-center">
-          <img
-            className="w-full md:max-w-[80%] "
-            src={car?.imgs.length > 0 ? car.imgs : "/car-placeholder.webp"}
-            alt=""
-          />
-        </div>
-        <div className="flex flex-col gap-2 md:w-[80%]">
-          <h1 className="text-4xl text-center font-bold text-blue-950">
+      <article className="mt-4 w-full mx-auto flex flex-col gap-4">
+        {car?.imgs.length > 0 ? (
+          <CarDetailsCarousel />
+        ) : (
+          "/car-placeholder.webp"
+        )}
+
+        <div className="flex flex-col gap-2 md:w-[80%] items-center mx-auto">
+          <h1 className="text-3xl md:text-5xl md:mt-16 text-center font-bold text-blue-950">
             {car.make} {car.model}
           </h1>
+          <p className="text-lg my-4">{car.description}</p>
           <div className="flex items-center justify-between w-full">
             <ClassBadge type={car.type} />
 
             <span className="md:font-bold">${car.price} / day</span>
           </div>
-          <p className="text-lg my-4">{car.description}</p>
 
           <label
             htmlFor="range"
@@ -97,7 +97,10 @@ function CarDetailsPage() {
               Total: ${total} for {range} {range > 1 ? "Days" : "Day"}
             </span>
           </div>
-          <div className="relative inline-block mt-6" onClick={handleClick}>
+          <div
+            className="relative inline-block mt-6 w-full"
+            onClick={handleClick}
+          >
             <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-lg font-semibold w-full">
               Rent
             </button>
