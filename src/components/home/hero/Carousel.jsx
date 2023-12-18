@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import Reveal from "../animations/Reveal";
+
 const imgs = [
   "/carimgs/bentley.webp",
   "/carimgs/gt-3.webp",
@@ -61,30 +61,38 @@ export default function Carousel() {
   };
 
   return (
-    <Reveal>
-      <div className="relative overflow-hidden bg-transparent ">
-        <motion.div
-          drag="x"
-          dragConstraints={{
-            left: 0,
-            right: 0,
-          }}
-          style={{
-            x: dragX,
-          }}
-          animate={{
-            translateX: `-${imgIndex * 100}%`,
-          }}
-          transition={SPRING_OPTIONS}
-          onDragEnd={onDragEnd}
-          className="flex cursor-grab items-center active:cursor-grabbing md:w-[65vw] md:mx-auto "
-        >
-          <Images imgIndex={imgIndex} />
-        </motion.div>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, scale: 0.9 },
+        visible: { opacity: 1, scale: 1 },
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ duration: 1.5 }}
+      className="relative overflow-hidden bg-transparent "
+    >
+      <motion.div
+        drag="x"
+        dragConstraints={{
+          left: 0,
+          right: 0,
+        }}
+        style={{
+          x: dragX,
+        }}
+        animate={{
+          translateX: `-${imgIndex * 100}%`,
+        }}
+        transition={SPRING_OPTIONS}
+        onDragEnd={onDragEnd}
+        className="flex cursor-grab items-center active:cursor-grabbing md:w-[65vw] md:mx-auto "
+      >
+        <Images imgIndex={imgIndex} />
+      </motion.div>
 
-        {/* <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} /> */}
-      </div>
-    </Reveal>
+      {/* <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} /> */}
+    </motion.div>
   );
 }
 

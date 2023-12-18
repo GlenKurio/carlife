@@ -58,7 +58,7 @@ const HorizontalScrollCarousel = ({ cars }) => {
 
 const Card = ({ car }) => {
   return (
-    <div className="group relative h-[550px] w-[350px] md:w-[850px] overflow-hidden bg-blue-50 rounded-lg">
+    <div className="group relative h-[80vh] w-[450px] md:w-[850px] overflow-hidden bg-blue-50 rounded-lg">
       <Link to={`/cars/${car.id}`}>
         <div
           style={{
