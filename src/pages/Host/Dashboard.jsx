@@ -71,11 +71,7 @@ function Dashboard() {
           duration: 0.5,
         }}
       >
-        <img
-          src="/public/host-graphs/Overview.png"
-          alt=""
-          className="shadow-xl"
-        />
+        <img src="/host-graphs/Overview.png" alt="" className="shadow-xl" />
       </motion.article>
     </section>
   );

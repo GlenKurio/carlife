@@ -19,7 +19,7 @@ function Income() {
           className="w-full"
         >
           <img
-            src="/public/host-graphs/Income.png"
+            src="/host-graphs/Income.png"
             alt=""
             className="w-full shadow-xl"
           />
@@ -39,7 +39,7 @@ function Income() {
           className="w-full"
         >
           <img
-            src="/public/host-graphs/Expenses.png"
+            src="/host-graphs/Expenses.png"
             alt=""
             className="w-full shadow-xl"
           />
@@ -59,7 +59,7 @@ function Income() {
           className="w-full "
         >
           <img
-            src="/public/host-graphs/Balance.png"
+            src="/host-graphs/Balance.png"
             alt=""
             className="w-full shadow-xl"
           />
@@ -80,7 +80,7 @@ function Income() {
           className="w-full md:w-1/2"
         >
           <img
-            src="/public/host-graphs/Recent Transaction.png"
+            src="/host-graphs/Recent Transaction.png"
             alt=""
             className="shadow-xl mx-auto"
           />
@@ -99,7 +99,7 @@ function Income() {
           className="w-full md:w-1/2"
         >
           <img
-            src="/public/host-graphs/Activity.png"
+            src="/host-graphs/Activity.png"
             alt=""
             className="shadow-xl mx-auto"
           />
