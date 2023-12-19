@@ -2,11 +2,11 @@ import Reveal from "./animations/Reveal";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 const logos = [
-  { src: "/public/featured/business-insider.png" },
-  { src: "/public/featured/forbes.png" },
-  { src: "/public/featured/techcrunch.png" },
-  { src: "/public/featured/the-new-york-times.png" },
-  { src: "/public/featured/usa-today.png" },
+  { src: "/featured/business-insider.png" },
+  { src: "/featured/forbes.png" },
+  { src: "/featured/techcrunch.png" },
+  { src: "/featured/the-new-york-times.png" },
+  { src: "/featured/usa-today.png" },
 ];
 
 function FeaturedIn() {
