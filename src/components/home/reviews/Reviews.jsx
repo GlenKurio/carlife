@@ -6,10 +6,11 @@ function Reviews() {
       <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-950 mb-8">
         See what our clients say
       </h2>
-
-      {reviews.map((review, idx) => (
-        <ReviewCard review={review} key={idx} idx={idx} />
-      ))}
+      <div className="flex flex-col gap-4 md:flex-row md:flex-wrap w-full justify-center">
+        {reviews.map((review, idx) => (
+          <ReviewCard review={review} key={idx} idx={idx} />
+        ))}
+      </div>
     </section>
   );
 }

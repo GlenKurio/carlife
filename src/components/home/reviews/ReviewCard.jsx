@@ -1,7 +1,6 @@
 import StarRating from "../../StarRating";
 import { motion } from "framer-motion";
 function ReviewCard({ review, idx }) {
-  console.log(review);
   return (
     <motion.article
       variants={{
@@ -19,24 +18,24 @@ function ReviewCard({ review, idx }) {
         stiffness: 500,
         damping: 90,
       }}
-      className="w-full rounded-xl p-2 flex flex-col gap-4 bg-gradient-to-r from-sky-500 to-indigo-500 md:w-1/2 md:mx-auto"
+      className="w-full rounded-xl p-2 flex flex-col gap-4 bg-gradient-to-r from-sky-500 to-indigo-500 md:w-[300px] "
     >
       <figure className="flex items-center gap-8">
         <img
           src={review.avatar}
           alt={`Image of ${review.name}`}
-          className="rounded-full"
+          className="rounded-full max-w-[50px]"
         />
-        <figcaption className="text-2xl font-bold text-blue-950">
+        <figcaption className="text-xl font-bold text-blue-950">
           {review.name}
         </figcaption>
       </figure>
       <div>
-        <p className="text-xl text-blue-50 font-medium text-center">
+        <p className="text-md text-blue-50 font-medium text-center">
           {review.review}
         </p>
       </div>
-      <div className="justify-self-end flex justify-end">
+      <div className="justify-self-end flex justify-center">
         <StarRating defaultRating={review.rating} size={26} />
       </div>
     </motion.article>

@@ -15,7 +15,7 @@ function CarDetailsPage() {
   const [range, setRange] = useState(1);
   const { order, setOrder } = useOrderStore();
 
-  if (isLoading && !car) {
+  if (isLoading && !car && !car.imgs) {
     return (
       <div className="animate-pulse min-h-[50vh] grid place-content-center uppercase bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-2xl text-transparent font-black tracking-[3px] cursor-pointer hover:text-amber-50 duration-200 transition-all ">
         <span className="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">
@@ -51,7 +51,7 @@ function CarDetailsPage() {
 
       <article className="mt-4 w-full mx-auto flex flex-col gap-4">
         {car?.imgs.length > 0 ? (
-          <CarDetailsCarousel />
+          <CarDetailsCarousel imgs={car?.imgs} />
         ) : (
           "/car-placeholder.webp"
         )}

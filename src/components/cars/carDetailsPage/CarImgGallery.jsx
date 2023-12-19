@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
+import useCarDataStore from "../../../store/useCarDataStore";
 
-const car = JSON.parse(localStorage.getItem("car-info"));
-const imgs = car.imgs;
-console.log(imgs);
+// const car = JSON.parse(localStorage.getItem("car-info"));
+// const imgs = car.imgs;
+
 // const imgs = [
 //   "/carimgs/bentley.webp",
 //   "/carimgs/gt-3.webp",
@@ -28,6 +29,9 @@ const SPRING_OPTIONS = {
 };
 
 export default function CarDetailsCarousel() {
+  const car = useCarDataStore((state) => state.car);
+  const imgs = car.imgs;
+
   const [imgIndex, setImgIndex] = useState(0);
 
   const dragX = useMotionValue(0);
@@ -44,10 +48,11 @@ export default function CarDetailsCarousel() {
           return pv + 1;
         });
       }
+      console.log("effect running");
     }, AUTO_DELAY);
 
     return () => clearInterval(intervalRef);
-  }, []);
+  }, [imgs]);
 
   const onDragEnd = () => {
     const x = dragX.get();
@@ -91,15 +96,15 @@ export default function CarDetailsCarousel() {
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing md:w-[75vw] md:mx-auto "
       >
-        <Images imgIndex={imgIndex} />
+        <Images imgIndex={imgIndex} imgs={imgs} />
       </motion.div>
 
-      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <Dots imgIndex={imgIndex} setImgIndex={setImgIndex} imgs={imgs} />
     </motion.div>
   );
 }
 
-const Images = ({ imgIndex }) => {
+const Images = ({ imgIndex, imgs }) => {
   return (
     <>
       {imgs.map((imgSrc, idx) => {
@@ -123,7 +128,7 @@ const Images = ({ imgIndex }) => {
   );
 };
 
-const Dots = ({ imgIndex, setImgIndex }) => {
+const Dots = ({ imgIndex, setImgIndex, imgs }) => {
   return (
     <div className="mt-4 flex w-full justify-between gap-2">
       {imgs.map((img, idx) => {
