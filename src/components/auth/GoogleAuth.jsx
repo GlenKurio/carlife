@@ -54,7 +54,7 @@ function GoogleAuth({ prefix }) {
         className="bg-blue-600 flex items-center justify-center gap-2 py-2 px-4 rounded-md hover:bg-blue-700 text-blue-50 font-medium transition-all duration-200 active:scale-95 text-sm"
       >
         <span>
-          <img className="max-h-[25px]" src="/public/google.png" alt="" />
+          <img className="max-h-[25px]" src="/google.png" alt="" />
         </span>
         <span>{prefix} with Google</span>
       </button>

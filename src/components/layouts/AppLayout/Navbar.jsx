@@ -33,11 +33,8 @@ function Navbar() {
         ))}
       </ul>
 
-      <Link to="/host" className="relative flex">
-        <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold">
-          Host
-        </button>
-        <button className="w-full absolute top-0 left-[50%] translate-x-[-50%] bg-gradient-to-l from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md opacity-0 hover:opacity-100 transition-all duration-300 linear text-sm font-semibold">
+      <Link to="/host" className="flex">
+        <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-6 py-2 rounded-md transition-all duration-200 ease-in-out text-sm font-semibold active:scale-95 hover:scale-105">
           Host
         </button>
       </Link>
