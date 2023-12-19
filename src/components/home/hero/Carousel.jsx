@@ -19,7 +19,7 @@ const DRAG_BUFFER = 30;
 
 const SPRING_OPTIONS = {
   type: "spring",
-  mass: 2,
+  mass: 10,
   stiffness: 400,
   damping: 80,
 };

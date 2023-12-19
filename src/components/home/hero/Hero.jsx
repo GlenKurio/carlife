@@ -13,12 +13,8 @@ function Hero() {
             fleet of luxury cars.
           </h2>
 
-          <Link to="/cars" className="relative flex w-full justify-center">
-            <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-8 py-4 rounded-md transition-all duration-200 ease-in-out text-2xl font-semibold w-full md:w-1/2 lg:w-1/4">
-              Browse Cars
-            </button>
-
-            <button className="w-full md:w-1/2 lg:w-1/4 absolute top-0 left-[50%] translate-x-[-50%] bg-gradient-to-l from-sky-500 to-indigo-500 text-blue-50 px-8 py-4 rounded-md opacity-0 hover:opacity-100 transition-all duration-300 linear text-2xl font-semibold">
+          <Link to="/cars" className=" flex w-full justify-center">
+            <button className="bg-gradient-to-r from-sky-500 to-indigo-500 text-blue-50 px-8 py-4 rounded-md transition-all duration-200 ease-in-out text-2xl font-semibold w-full md:w-1/2 lg:w-1/4 active:scale-95 hover:scale-105">
               Browse Cars
             </button>
           </Link>
