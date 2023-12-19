@@ -16,8 +16,6 @@ function CheckoutForm({ order }) {
       total: total,
     };
 
-    console.log(customerOrder);
-
     await placeOrder(customerOrder);
   }
 

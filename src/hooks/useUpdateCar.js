@@ -19,7 +19,7 @@ function useUpdateCar() {
     setIsUpdating(true);
     setError(null);
     const carDocRef = doc(firestore, "cars", id);
-    console.log(selectedFiles);
+
     try {
       let newImgs = [];
       if (selectedFiles.length !== 0) {
