@@ -61,10 +61,6 @@ export default function CarDetailsCarousel() {
       setImgIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && imgIndex > 0) {
       setImgIndex((pv) => pv - 1);
-    } else if (imgIndex == imgs.length - 1) {
-      setImgIndex(0);
-    } else if (imgIndex === 0) {
-      setImgIndex(imgs.length - 1);
     }
   };
 

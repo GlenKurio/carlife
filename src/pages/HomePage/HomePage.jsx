@@ -7,6 +7,7 @@ import FeaturedCars from "../../components/home/FeaturedCars";
 
 import Reviews from "../../components/home/reviews/Reviews";
 import Footer from "../../components/layouts/AppLayout/Footer";
+import NewCarousel from "../../components/home/hero/NewCarousel";
 
 function HomePage() {
   return (

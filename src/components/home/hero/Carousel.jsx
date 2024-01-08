@@ -15,7 +15,7 @@ const imgs = [
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 100;
+const DRAG_BUFFER = 50;
 
 const SPRING_OPTIONS = {
   type: "spring",
@@ -53,10 +53,6 @@ export default function Carousel() {
       setImgIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && imgIndex > 0) {
       setImgIndex((pv) => pv - 1);
-    } else if (imgIndex == imgs.length - 1) {
-      setImgIndex(0);
-    } else if (imgIndex === 0) {
-      setImgIndex(imgs.length - 1);
     }
   };
 
@@ -75,8 +71,8 @@ export default function Carousel() {
       <motion.div
         drag="x"
         dragConstraints={{
-          left: 0,
-          right: 0,
+          left: 10,
+          right: 10,
         }}
         style={{
           x: dragX,
