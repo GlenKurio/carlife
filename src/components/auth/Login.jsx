@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import useLogin from "../../hooks/useLoginWithEmailAndPassword";
 import { toast } from "react-hot-toast";
-
+ 
 function LoginForm() {
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;

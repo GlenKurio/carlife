@@ -15,13 +15,13 @@ const imgs = [
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
-const DRAG_BUFFER = 30;
+const DRAG_BUFFER = 100;
 
 const SPRING_OPTIONS = {
   type: "spring",
-  mass: 10,
-  stiffness: 400,
-  damping: 80,
+  mass: 5,
+  stiffness: 200,
+  damping: 50,
 };
 
 export default function Carousel() {
@@ -63,8 +63,8 @@ export default function Carousel() {
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, scale: 0.9 },
-        visible: { opacity: 1, scale: 1 },
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
       }}
       initial="hidden"
       whileInView="visible"
